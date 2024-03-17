@@ -1,4 +1,7 @@
+document.addEventListener('DOMContentLoaded', function() {
+    
 
+    // Function to toggle the color options dropdown
     function toggleDropdown() {
         var colorOptions = document.getElementById("colorOptions");
         colorOptions.style.display = (colorOptions.style.display === "block") ? "none" : "block";
@@ -97,3 +100,4 @@
             icon.style.display = 'inline-block';
         }, 3000);
     }
+});
