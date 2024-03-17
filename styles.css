@@ -1,0 +1,237 @@
+body {
+    font-family: Inter, sans-serif;
+    background-color: #F4EBE6;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensure full height */
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center; 
+}
+
+.title h2 {
+  font-family: Montserrat, sans-serif;
+  color: #AE9983;
+  font-size: 25px;
+  text-transform: ;
+}
+
+.title p {
+  margin-bottom: 3px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: -15px;
+  color: #AE9983;
+  opacity: 0.7;
+}
+
+
+#greeting-card {
+    width: auto;
+    margin: 30px auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 5px 20px 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+#good-greeting {
+    font-family: Sansita, sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    margin-bottom: -32px;
+}
+
+#greeting {
+  font-family: Sansita, sans-serif;
+  font-weight: 800;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+#date {
+  font-family: Montserrat, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  opacity: 0.8;
+}
+
+#bottom-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+}
+
+
+
+#user-name {
+    font-family: Inter, sans-serif;
+    font-weight: 600;
+    padding: 4px 7px;
+    font-size: 16px;
+    margin-right: 10px;
+    color: #AE9983;
+    border: none;
+    border-bottom: 2px solid #CDB8A2;
+    background-color: transparent;
+    outline: none;
+}
+
+#user-name:hover {
+    color: #96836E;
+    border-bottom: 2px solid #AE9983;
+}
+
+#user-name:focus {
+    
+    color: #96836E;
+    border-bottom: 2px solid #AE9983;
+}
+
+#user-name::placeholder {
+    color: #AE9983;
+    font-weight: 500;
+}
+
+.color-dropdown {
+    position: relative;
+    font-size: 15px;
+    font-weight: 600;
+    color: #AE9983;
+    border-radius: 10px;
+    border: 1px solid #AE9983;
+    display: inline-block;
+    background: #F4EBE6;
+    padding: 10px 20px;
+    width: 120px;
+}
+
+.color-option span {
+    
+    position: absolute;
+    margin-top: 7px;
+    margin-left: 2.6em;
+    white-space: nowrap;
+}
+
+.selected-color {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.color-preview {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.color-options {
+    display: none;
+    position: absolute;
+    font-size: 13.5px;
+    padding: 5px;
+    top: -12.1em;
+    left: 0px;
+    width: 150px;
+    border: 1px solid #AE9983;
+    border-radius: 10px;
+    background-color: #fff;   
+}
+
+.color-option {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin: 5px;
+}
+
+.message {
+  font-family: Montserrat, sans-serif;
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 4px 8px;
+  color: #AE9983;
+  background: #E8D9D2;
+  margin-top: 5em;
+}
+
+.link-container {
+  position: relative;
+  padding: 2px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 320px;
+  height: 45px;
+  margin-top: 0.3em;
+  
+  background: transparent;
+  border: 1px solid #AE9983;
+  border-radius: 10px;
+}
+
+#copy-link-btn {
+  min-width: 110px;
+  padding: 10px 0px;
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  background: #AE9983;
+}
+
+#copy-link-btn i {
+  margin-right: 3px;
+  margin-left: -1px;
+}
+
+#copy-link-btn:hover{
+  background: #BDA892;
+}
+
+#copy-link-btn:active{
+  transform: translateY(1px);
+}
+
+
+
+
+#generated-link {
+  background: transparent;
+  color: #AE9983;
+  margin-left: 10px;
+  padding: 10px;
+  font-size: 15px;
+  border: none;
+  border-radius: 10px;
+}
+
+#generated-link:focus {
+  outline: none;
+}
+
+
+button {
+    cursor: pointer;
+}
+
+::selection {
+    background-color: #AE9983; /* Orange background */
+    color: #fff; /* White text color */
+}
+
+
