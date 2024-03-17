@@ -63,7 +63,7 @@ function getDateInfo(date) {
 // Function to generate a unique link
 function generateUniqueLink(userName, color) {
     var url = new URL(window.location.href);
-    var defaultLink = url.href.replace("index.html", "p/");
+    var defaultLink = url.href.replace("index.html", "widget/index.html"); // Update to point to the widget HTML
     var query = "user=" + encodeURIComponent(userName) + "&color=" + encodeURIComponent(color);
     return defaultLink + '?' + query;
 }
