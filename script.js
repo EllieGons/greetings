@@ -1,7 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Your existing code for custom page here
 
-    // Function to toggle the color options dropdown
     function toggleDropdown() {
         var colorOptions = document.getElementById("colorOptions");
         colorOptions.style.display = (colorOptions.style.display === "block") ? "none" : "block";
