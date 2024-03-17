@@ -97,4 +97,3 @@
             icon.style.display = 'inline-block';
         }, 3000);
     }
-});
