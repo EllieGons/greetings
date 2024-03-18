@@ -26,12 +26,6 @@ function getColorName(color) {
     return colorNames[color] || "Pick a color";
 }
 
-
-
-document.addEventListener('DOMContentLoaded', function() {
-
-    
-
 // Function to generate a unique link with user input
 function generateUniqueLink(userName, color) {
     var url = new URL(window.location.href);
@@ -55,52 +49,62 @@ function updateGreetingCardAndLink() {
     document.getElementById('greeting-card').style.color = color; // Update text color
     document.getElementById('greeting-card').style.borderColor = color; // Update border color
 }
+
+// Function to get the current greeting
+function getGreeting(hour) {
+    if (hour >= 5 && hour < 12) {
+        return 'morning';
+    } else if (hour >= 12 && hour < 18) {
+        return 'afternoon';
+    } else {
+        return 'evening';
+    }
+}
+
+// Function to get the current date information
+function getDateInfo(date) {
+    var dayOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    return dayOfWeek[date.getDay()] + ', ' + date.getDate() + ' ' + monthNames[date.getMonth()] + ' ' + date.getFullYear();
+}
+
+// Function to copy the generated link to clipboard
+function copyLink() {
+    var linkInput = document.getElementById('generated-link');
+    linkInput.select();
+    document.execCommand('copy');
+
+    var copyLinkBtn = document.getElementById('copy-link-btn');
+    var buttonText = copyLinkBtn.querySelector('.button-text');
+    var icon = copyLinkBtn.querySelector('i');
+
+    // Change the text of the button
+    buttonText.textContent = 'Copied!';
     
+    // Hide the icon
+    icon.style.display = 'none';
+
+    setTimeout(function() {
+        // Revert back to original text after 2 seconds
+        buttonText.textContent = 'Copy Link';
+        // Show the icon
+        icon.style.display = 'inline-block';
+    }, 3000);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Add event listeners for color selection
+    var colorOptions = document.querySelectorAll(".color-option");
+    colorOptions.forEach(function(option) {
+        option.addEventListener("click", function() {
+            var color = option.style.backgroundColor;
+            selectColor(color);
+        });
+    });
+
     // Add event listener to copy link button
     document.getElementById('copy-link-btn').addEventListener('click', copyLink);
 
     // Initial update of greeting card and link
     updateGreetingCardAndLink();
-
-    // Function to get the current greeting
-    function getGreeting(hour) {
-        if (hour >= 5 && hour < 12) {
-            return 'morning';
-        } else if (hour >= 12 && hour < 18) {
-            return 'afternoon';
-        } else {
-            return 'evening';
-        }
-    }
-
-    // Function to get the current date information
-    function getDateInfo(date) {
-        var dayOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-        var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-        return dayOfWeek[date.getDay()] + ', ' + date.getDate() + ' ' + monthNames[date.getMonth()] + ' ' + date.getFullYear();
-    }
-
-    // Function to copy the generated link to clipboard
-    function copyLink() {
-        var linkInput = document.getElementById('generated-link');
-        linkInput.select();
-        document.execCommand('copy');
-
-        var copyLinkBtn = document.getElementById('copy-link-btn');
-        var buttonText = copyLinkBtn.querySelector('.button-text');
-        var icon = copyLinkBtn.querySelector('i');
-
-        // Change the text of the button
-        buttonText.textContent = 'Copied!';
-        
-        // Hide the icon
-        icon.style.display = 'none';
-
-        setTimeout(function() {
-            // Revert back to original text after 2 seconds
-            buttonText.textContent = 'Copy Link';
-            // Show the icon
-            icon.style.display = 'inline-block';
-        }, 3000);
-    }
 });
