@@ -3,47 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&family=Sansita:wght@800&family=Montserrat:wght@700&display=swap">
-    <title>Greetings Widget</title>
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="stylesheet" href="styles.css">
+    <title>Greeting Card Customization</title>
 </head>
 <body>
-    <div class="title">
-        <h2>Greetings Widget</h2>
-        <p>Created by Ellie Gons</p>
-    </div>
+    <h1>Greeting Card Customization</h1>
+    <form id="greetingForm">
+        <input type="text" id="userName" placeholder="Your Name">
+        <select id="colorSelect">
+            <option value="#000000">Black</option>
+            <option value="#ff0000">Red</option>
+            <option value="#00ff00">Green</option>
+            <option value="#0000ff">Blue</option>
+        </select>
+        <button type="submit">Generate Greeting</button>
+    </form>
 
-    <div id="greeting-card">
-        <p id="good-greeting">Good</p>
-        <p id="greeting"></p>
-        <div id="date"></div>
-    </div>
-    <div id="bottom-container">
-        <input type="text" id="user-name" placeholder="Type a name...">
+    <div id="embedLink"></div>
 
-        <div class="color-dropdown">
-            <div class="selected-color" onclick="toggleDropdown()">
-                <div class="color-preview" style="background-color: #B89F89;"></div>
-                <span>Pick a color</span>
-            </div>
-            <div class="color-options" id="colorOptions">
-                <div class="color-option" onclick="selectColor('#B89F89')" style="background-color: #B89F89;"><span>Brown</span></div>
-                <div class="color-option" onclick="selectColor('#B6B498')" style="background-color: #B6B498;"><span>Green</span></div>
-                <div class="color-option" onclick="selectColor('#FBA7A9')" style="background-color: #FBA7A9;"><span>Red</span></div>
-                <div class="color-option" onclick="selectColor('#C0BBC0')" style="background-color: #C0BBC0;"><span>Purple</span></div>
-            </div>
-        </div>
-    </div>
-    <p class="message">After customizing your widget, copy the link below to embed it in your pages.</p>
-    <div class="link-container">
-        <button id="copy-link-btn" onclick="copyLink()">
-            <i class="fas fa-link"></i>
-            <span class="button-text">Copy Link</span>
-        </button>
-        <input type="text" id="generated-link" readonly>
-    </div>
-    <script src="src/script.js"></script>
+    <script src="customization.js"></script>
 </body>
 </html>
