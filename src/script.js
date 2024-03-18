@@ -62,10 +62,10 @@ function getDateInfo(date) {
     return dayOfWeek[date.getDay()] + ', ' + date.getDate() + ' ' + monthNames[date.getMonth()] + ' ' + date.getFullYear();
 }
 
-// Function to generate a unique link
+// Function to generate a unique link with user input
 function generateUniqueLink(userName, color) {
     var url = new URL(window.location.href);
-    var defaultLink = url.href.replace("index.html", "p/");
+    var defaultLink = url.href.replace("greetings.html", "widget.html"); // Update to point to the widget HTML
     var query = "user=" + encodeURIComponent(userName) + "&color=" + encodeURIComponent(color);
     return defaultLink + '?' + query;
 }
