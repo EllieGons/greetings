@@ -14,10 +14,7 @@
         toggleDropdown(); // Hide the dropdown after selecting a color
     }
 
-document.addEventListener('DOMContentLoaded', function() {
-    
-
-    // Function to get the name of the selected color
+// Function to get the name of the selected color
     function getColorName(color) {
         // Map colors to their corresponding names
         var colorNames = {
@@ -29,18 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return colorNames[color] || "Pick a color";
     }
 
-    // Function to generate a unique link with user input
-    function generateUniqueLink(userName, color) {
-        var url = new URL(window.location.href);
-        var defaultLink = url.href.replace("greetings.html", "widget.html"); // Update to point to the widget HTML
-        var query = "user=" + encodeURIComponent(userName) + "&color=" + encodeURIComponent(color);
-        return defaultLink + '?' + query;
-    }
-
-    // Add event listener to copy link button
-    document.getElementById('copy-link-btn').addEventListener('click', copyLink);
-
-    // Initial update of greeting card and link
+// Initial update of greeting card and link
     updateGreetingCardAndLink();
 
     // Function to update the greeting card and link
@@ -58,6 +44,22 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('greeting-card').style.color = color; // Update text color
         document.getElementById('greeting-card').style.borderColor = color; // Update border color
     }
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // Function to generate a unique link with user input
+    function generateUniqueLink(userName, color) {
+        var url = new URL(window.location.href);
+        var defaultLink = url.href.replace("greetings.html", "widget.html"); // Update to point to the widget HTML
+        var query = "user=" + encodeURIComponent(userName) + "&color=" + encodeURIComponent(color);
+        return defaultLink + '?' + query;
+    }
+
+    // Add event listener to copy link button
+    document.getElementById('copy-link-btn').addEventListener('click', copyLink);
+
+    
 
     // Function to get the current greeting
     function getGreeting(hour) {
