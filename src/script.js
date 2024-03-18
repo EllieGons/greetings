@@ -27,7 +27,7 @@ function getColorName(color) {
 
 
 
-// Function to update the greeting card and link
+// REST Function to update the greeting card and link
 function updateGreetingCardAndLink() {
     var userName = document.getElementById('user-name').value || 'Muffin'; // Get user name value
     var color = document.querySelector(".selected-color .color-preview").style.backgroundColor;
@@ -39,16 +39,9 @@ function updateGreetingCardAndLink() {
     document.getElementById('generated-link').value = link;
 
     // Update greeting card styles
-    var greetingCard = document.getElementById('greeting-card');
-    greetingCard.style.color = color; // Update text color
-    greetingCard.style.borderColor = color; // Update border color
+    document.getElementById('greeting-card').style.color = color; // Update text color
+    document.getElementById('greeting-card').style.borderColor = color; // Update border color
 }
-
-// Add event listener for input change to update greeting card and link
-document.getElementById('user-name').addEventListener('input', updateGreetingCardAndLink);
-
-// Initial update of greeting card and link
-updateGreetingCardAndLink();
 
 
 // Function to get the current greeting
@@ -105,3 +98,9 @@ function copyLink() {
 
 // Add event listener to copy link button
 document.getElementById('copy-link-btn').addEventListener('click', copyLink);
+
+// Add event listener for input change to update greeting card and link
+document.getElementById('user-name').addEventListener('input', updateGreetingCardAndLink);
+
+// Initial update of greeting card and link
+updateGreetingCardAndLink();
