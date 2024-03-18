@@ -1,7 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
-    
-
-    // Function to toggle the color options dropdown
+// Function to toggle the color options dropdown
     function toggleDropdown() {
         var colorOptions = document.getElementById("colorOptions");
         colorOptions.style.display = (colorOptions.style.display === "block") ? "none" : "block";
@@ -16,6 +13,9 @@ document.addEventListener('DOMContentLoaded', function() {
         updateGreetingCardAndLink(); // Update greeting card color instantly
         toggleDropdown(); // Hide the dropdown after selecting a color
     }
+
+document.addEventListener('DOMContentLoaded', function() {
+    
 
     // Function to get the name of the selected color
     function getColorName(color) {
