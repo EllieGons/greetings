@@ -1,4 +1,5 @@
-// Function to toggle the color options dropdown
+document.addEventListener('DOMContentLoaded', function() {
+    // Function to toggle the color options dropdown
     function toggleDropdown() {
         var colorOptions = document.getElementById("colorOptions");
         colorOptions.style.display = (colorOptions.style.display === "block") ? "none" : "block";
@@ -14,7 +15,7 @@
         toggleDropdown(); // Hide the dropdown after selecting a color
     }
 
-// Function to get the name of the selected color
+    // Function to get the name of the selected color
     function getColorName(color) {
         // Map colors to their corresponding names
         var colorNames = {
@@ -26,8 +27,13 @@
         return colorNames[color] || "Pick a color";
     }
 
-// Initial update of greeting card and link
-    updateGreetingCardAndLink();
+    // Function to generate a unique link with user input
+    function generateUniqueLink(userName, color) {
+        var url = new URL(window.location.href);
+        var defaultLink = url.href.replace("greetings.html", "widget.html"); // Update to point to the widget HTML
+        var query = "user=" + encodeURIComponent(userName) + "&color=" + encodeURIComponent(color);
+        return defaultLink + '?' + query;
+    }
 
     // Function to update the greeting card and link
     function updateGreetingCardAndLink() {
@@ -45,21 +51,11 @@
         document.getElementById('greeting-card').style.borderColor = color; // Update border color
     }
 
-
-document.addEventListener('DOMContentLoaded', function() {
-    
-    // Function to generate a unique link with user input
-    function generateUniqueLink(userName, color) {
-        var url = new URL(window.location.href);
-        var defaultLink = url.href.replace("greetings.html", "widget.html"); // Update to point to the widget HTML
-        var query = "user=" + encodeURIComponent(userName) + "&color=" + encodeURIComponent(color);
-        return defaultLink + '?' + query;
-    }
-
     // Add event listener to copy link button
     document.getElementById('copy-link-btn').addEventListener('click', copyLink);
 
-    
+    // Initial update of greeting card and link
+    updateGreetingCardAndLink();
 
     // Function to get the current greeting
     function getGreeting(hour) {
