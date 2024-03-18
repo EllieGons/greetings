@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Greeting Card</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&family=Sansita:wght@800&family=Montserrat:wght@700&display=swap">
+    <title>Greetings Widget</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
 <body>
-    <section id="render_section">
-            
-            <div id="greeting-card" class="container">
-                <p id="good-greeting">Good</p>
-                <p id="greeting"></p>
-                <div id="date"></div>
-            </div>
-        </section>
-
-    <script src="../src/render.js"></script>
+    <div id="greeting-card">
+        <p id="good-greeting">Good</p>
+        <p id="greeting"></p>
+        <div id="date"></div>
+    </div>
+    <script src="widget.js"></script>
 </body>
 </html>
