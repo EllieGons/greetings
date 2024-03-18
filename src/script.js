@@ -1,56 +1,56 @@
+// Function to toggle the color options dropdown
+function toggleDropdown() {
+    var colorOptions = document.getElementById("colorOptions");
+    colorOptions.style.display = (colorOptions.style.display === "block") ? "none" : "block";
+}
+
+// Function to select a color
+function selectColor(color) {
+    var selectedColor = document.querySelector(".selected-color .color-preview");
+    var selectedColorName = document.querySelector(".selected-color span");
+    selectedColor.style.backgroundColor = color;
+    selectedColorName.textContent = getColorName(color); // Set color name
+    updateGreetingCardAndLink(); // Update greeting card color instantly
+    toggleDropdown(); // Hide the dropdown after selecting a color
+}
+
+// Function to get the name of the selected color
+function getColorName(color) {
+    // Map colors to their corresponding names
+    var colorNames = {
+        "#B89F89": "Brown",
+        "#B6B498": "Green",
+        "#FBA7A9": "Red",
+        "#C0BBC0": "Purple"
+    };
+    return colorNames[color] || "Pick a color";
+}
+
+// Function to generate a unique link with user input
+function generateUniqueLink(userName, color) {
+    var url = new URL(window.location.href);
+    var defaultLink = url.href.replace("greetings.html", "widget.html"); // Update to point to the widget HTML
+    var query = "user=" + encodeURIComponent(userName) + "&color=" + encodeURIComponent(color);
+    return defaultLink + '?' + query;
+}
+
+// Function to update the greeting card and link
+function updateGreetingCardAndLink() {
+    var userName = document.getElementById('user-name').value || 'Muffin'; // Get user name value
+    var color = document.querySelector(".selected-color .color-preview").style.backgroundColor;
+    var link = generateUniqueLink(userName, color);
+
+    // Update greeting, date, and link elements
+    document.getElementById('greeting').textContent = getGreeting(new Date().getHours()) + ', ' + userName + '!';
+    document.getElementById('date').textContent = getDateInfo(new Date());
+    document.getElementById('generated-link').value = link;
+
+    // Update greeting card styles
+    document.getElementById('greeting-card').style.color = color; // Update text color
+    document.getElementById('greeting-card').style.borderColor = color; // Update border color
+}
+
 document.addEventListener('DOMContentLoaded', function() {
-    // Function to toggle the color options dropdown
-    function toggleDropdown() {
-        var colorOptions = document.getElementById("colorOptions");
-        colorOptions.style.display = (colorOptions.style.display === "block") ? "none" : "block";
-    }
-
-    // Function to select a color
-    function selectColor(color) {
-        var selectedColor = document.querySelector(".selected-color .color-preview");
-        var selectedColorName = document.querySelector(".selected-color span");
-        selectedColor.style.backgroundColor = color;
-        selectedColorName.textContent = getColorName(color); // Set color name
-        updateGreetingCardAndLink(); // Update greeting card color instantly
-        toggleDropdown(); // Hide the dropdown after selecting a color
-    }
-
-    // Function to get the name of the selected color
-    function getColorName(color) {
-        // Map colors to their corresponding names
-        var colorNames = {
-            "#B89F89": "Brown",
-            "#B6B498": "Green",
-            "#FBA7A9": "Red",
-            "#C0BBC0": "Purple"
-        };
-        return colorNames[color] || "Pick a color";
-    }
-
-    // Function to generate a unique link with user input
-    function generateUniqueLink(userName, color) {
-        var url = new URL(window.location.href);
-        var defaultLink = url.href.replace("greetings.html", "widget.html"); // Update to point to the widget HTML
-        var query = "user=" + encodeURIComponent(userName) + "&color=" + encodeURIComponent(color);
-        return defaultLink + '?' + query;
-    }
-
-    // Function to update the greeting card and link
-    function updateGreetingCardAndLink() {
-        var userName = document.getElementById('user-name').value || 'Muffin'; // Get user name value
-        var color = document.querySelector(".selected-color .color-preview").style.backgroundColor;
-        var link = generateUniqueLink(userName, color);
-
-        // Update greeting, date, and link elements
-        document.getElementById('greeting').textContent = getGreeting(new Date().getHours()) + ', ' + userName + '!';
-        document.getElementById('date').textContent = getDateInfo(new Date());
-        document.getElementById('generated-link').value = link;
-
-        // Update greeting card styles
-        document.getElementById('greeting-card').style.color = color; // Update text color
-        document.getElementById('greeting-card').style.borderColor = color; // Update border color
-    }
-
     // Add event listener to copy link button
     document.getElementById('copy-link-btn').addEventListener('click', copyLink);
 
