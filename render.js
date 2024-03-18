@@ -1,33 +1,40 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const params = new URLSearchParams(window.location.search);
-    const userName = params.get("name") || "User";
-    const color = params.get("color") || "#000000";
+// Get the current URL
+const url = new URL(window.location.href);
 
-    const greetingCard = document.getElementById("greetingCard");
-    const greetingMessage = document.getElementById("greetingMessage");
-    const currentDate = document.getElementById("currentDate");
+// Extract the color and name parameters from the URL
+const color = url.searchParams.get("color");
+const userName = url.searchParams.get("user");
 
-    const timeOfDay = getTimeOfDay();
-    const date = getCurrentDate();
+// Check if both color and name parameters are present
+if (color && userName) {
+    // Update greeting card content
+    const greeting = getGreeting(new Date().getHours()) + ', ' + userName + '!';
+    const dateInfo = getDateInfo(new Date());
+    document.getElementById('greeting').textContent = greeting;
+    document.getElementById('date').textContent = dateInfo;
 
-    greetingMessage.textContent = `Good ${timeOfDay}, ${userName}!`;
-    greetingMessage.style.color = color;
-    currentDate.textContent = date;
+    // Update greeting card styles
+    document.getElementById('greeting-card').style.color = color; // Update text color
+    document.getElementById('greeting-card').style.borderColor = color; // Update border color
+} else {
+    // Handle the case where one or both parameters are missing
+    console.log("Both color and name parameters are required in the URL.");
+}
 
-    function getTimeOfDay() {
-        const currentHour = new Date().getHours();
-        if (currentHour < 12) {
-            return "Morning";
-        } else if (currentHour < 18) {
-            return "Afternoon";
-        } else {
-            return "Evening";
-        }
+// Function to get the current greeting
+function getGreeting(hour) {
+    if (hour >= 5 && hour < 12) {
+        return 'Good morning';
+    } else if (hour >= 12 && hour < 18) {
+        return 'Good afternoon';
+    } else {
+        return 'Good evening';
     }
+}
 
-    function getCurrentDate() {
-        const now = new Date();
-        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        return now.toLocaleDateString('en-US', options);
-    }
-});
+// Function to get the current date information
+function getDateInfo(date) {
+    const dayOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    return dayOfWeek[date.getDay()] + ', ' + date.getDate() + ' ' + monthNames[date.getMonth()] + ' ' + date.getFullYear();
+}
