@@ -14,7 +14,11 @@ function selectColor(color) {
     toggleDropdown(); // Hide the dropdown after selecting a color
 }
 
-// Function to get the name of the selected color
+
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    // Function to get the name of the selected color
 function getColorName(color) {
     // Map colors to their corresponding names
     var colorNames = {
@@ -49,8 +53,7 @@ function updateGreetingCardAndLink() {
     document.getElementById('greeting-card').style.color = color; // Update text color
     document.getElementById('greeting-card').style.borderColor = color; // Update border color
 }
-
-document.addEventListener('DOMContentLoaded', function() {
+    
     // Add event listener to copy link button
     document.getElementById('copy-link-btn').addEventListener('click', copyLink);
 
