@@ -1,25 +1,33 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Function to parse URL parameters
-    function getQueryParams() {
-        var params = {};
-        var queryString = window.location.search.substring(1);
-        var pairs = queryString.split("&");
-        for (var i = 0; i < pairs.length; i++) {
-            var pair = pairs[i].split("=");
-            params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
+document.addEventListener("DOMContentLoaded", function () {
+    const params = new URLSearchParams(window.location.search);
+    const userName = params.get("name") || "User";
+    const color = params.get("color") || "#000000";
+
+    const greetingCard = document.getElementById("greetingCard");
+    const greetingMessage = document.getElementById("greetingMessage");
+    const currentDate = document.getElementById("currentDate");
+
+    const timeOfDay = getTimeOfDay();
+    const date = getCurrentDate();
+
+    greetingMessage.textContent = `Good ${timeOfDay}, ${userName}!`;
+    greetingMessage.style.color = color;
+    currentDate.textContent = date;
+
+    function getTimeOfDay() {
+        const currentHour = new Date().getHours();
+        if (currentHour < 12) {
+            return "Morning";
+        } else if (currentHour < 18) {
+            return "Afternoon";
+        } else {
+            return "Evening";
         }
-        return params;
     }
 
-    // Function to update the widget based on URL parameters
-    function updateWidget() {
-        var queryParams = getQueryParams();
-        var userName = queryParams.user || 'World';
-        var color = queryParams.color || '#000000'; // Default color if not provided
-        document.getElementById('greeting').textContent = 'Hello, ' + userName + '!';
-        document.getElementById('greeting').style.color = color;
+    function getCurrentDate() {
+        const now = new Date();
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        return now.toLocaleDateString('en-US', options);
     }
-
-    // Update widget on page load
-    updateWidget();
 });
