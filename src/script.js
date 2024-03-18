@@ -14,11 +14,7 @@ function selectColor(color) {
     toggleDropdown(); // Hide the dropdown after selecting a color
 }
 
-
-
-document.addEventListener('DOMContentLoaded', function() {
-
-    // Function to get the name of the selected color
+// Function to get the name of the selected color
 function getColorName(color) {
     // Map colors to their corresponding names
     var colorNames = {
@@ -29,6 +25,12 @@ function getColorName(color) {
     };
     return colorNames[color] || "Pick a color";
 }
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    
 
 // Function to generate a unique link with user input
 function generateUniqueLink(userName, color) {
