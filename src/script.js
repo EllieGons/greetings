@@ -1,10 +1,10 @@
-// Function to toggle the color options dropdown
 function toggleDropdown() {
     var colorOptions = document.getElementById("colorOptions");
     colorOptions.style.display = (colorOptions.style.display === "block") ? "none" : "block";
 }
 
-// Function to select a color
+
+
 function selectColor(color) {
     var selectedColor = document.querySelector(".selected-color .color-preview");
     var selectedColorName = document.querySelector(".selected-color span");
@@ -14,7 +14,6 @@ function selectColor(color) {
     toggleDropdown(); // Hide the dropdown after selecting a color
 }
 
-// Function to get the name of the selected color
 function getColorName(color) {
     // Map colors to their corresponding names
     var colorNames = {
@@ -26,15 +25,9 @@ function getColorName(color) {
     return colorNames[color] || "Pick a color";
 }
 
-// Function to generate a unique link with user input
-function generateUniqueLink(userName, color) {
-    var url = new URL(window.location.href);
-    var defaultLink = url.href.replace("greetings.html", "widget.html"); // Update to point to the widget HTML
-    var query = "user=" + encodeURIComponent(userName) + "&color=" + encodeURIComponent(color);
-    return defaultLink + '?' + query;
-}
 
-// Function to update the greeting card and link
+
+// REST Function to update the greeting card and link
 function updateGreetingCardAndLink() {
     var userName = document.getElementById('user-name').value || 'Muffin'; // Get user name value
     var color = document.querySelector(".selected-color .color-preview").style.backgroundColor;
@@ -49,6 +42,7 @@ function updateGreetingCardAndLink() {
     document.getElementById('greeting-card').style.color = color; // Update text color
     document.getElementById('greeting-card').style.borderColor = color; // Update border color
 }
+
 
 // Function to get the current greeting
 function getGreeting(hour) {
@@ -67,6 +61,15 @@ function getDateInfo(date) {
     var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     return dayOfWeek[date.getDay()] + ', ' + date.getDate() + ' ' + monthNames[date.getMonth()] + ' ' + date.getFullYear();
 }
+
+// Function to generate a unique link
+function generateUniqueLink(userName, color) {
+    var url = new URL(window.location.href);
+    var defaultLink = url.href.replace("index.html", "p/");
+    var query = "user=" + encodeURIComponent(userName) + "&color=" + encodeURIComponent(color);
+    return defaultLink + '?' + query;
+}
+
 
 // Function to copy the generated link to clipboard
 function copyLink() {
@@ -92,19 +95,12 @@ function copyLink() {
     }, 3000);
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Add event listeners for color selection
-    var colorOptions = document.querySelectorAll(".color-option");
-    colorOptions.forEach(function(option) {
-        option.addEventListener("click", function() {
-            var color = option.style.backgroundColor;
-            selectColor(color);
-        });
-    });
 
-    // Add event listener to copy link button
-    document.getElementById('copy-link-btn').addEventListener('click', copyLink);
+// Add event listener to copy link button
+document.getElementById('copy-link-btn').addEventListener('click', copyLink);
 
-    // Initial update of greeting card and link
-    updateGreetingCardAndLink();
-});
+// Add event listener for input change to update greeting card and link
+document.getElementById('user-name').addEventListener('input', updateGreetingCardAndLink);
+
+// Initial update of greeting card and link
+updateGreetingCardAndLink();
