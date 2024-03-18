@@ -38,3 +38,16 @@ function getDateInfo(date) {
     const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     return dayOfWeek[date.getDay()] + ', ' + date.getDate() + ' ' + monthNames[date.getMonth()] + ' ' + date.getFullYear();
 }
+
+// Listen for messages from the custom page
+window.addEventListener('message', function(event) {
+    if (event.data.type === 'updateCard') {
+        // Update greeting card with new user name and color
+        const userName = event.data.userName;
+        const color = event.data.color;
+        const greeting = getGreeting(new Date().getHours()) + ', ' + userName + '!';
+        document.getElementById('greeting').textContent = greeting;
+        document.getElementById('greeting-card').style.color = color;
+        document.getElementById('greeting-card').style.borderColor = color;
+    }
+});
