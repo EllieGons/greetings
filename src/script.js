@@ -64,11 +64,11 @@ function getDateInfo(date) {
 
 // Function to generate a unique link with user input
 function generateUniqueLink(userName, color) {
-    var url = new URL(window.location.href);
-    var defaultLink = url.href.replace("greetings.html", "widget.html"); // Update to point to the widget HTML
+    var defaultLink = "https://elliegons.github.io/greetings/widget/";
     var query = "user=" + encodeURIComponent(userName) + "&color=" + encodeURIComponent(color);
     return defaultLink + '?' + query;
 }
+
 
 
 // Function to copy the generated link to clipboard
