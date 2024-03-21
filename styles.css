@@ -1,65 +1,40 @@
 body {
-    font-family: Inter, sans-serif;
-    background-color: #F4EBE6;
+    font-family: 'Inter', sans-serif;
+    background-color: transparent;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Ensure full height */
+    min-height: 100vh; 
+    -webkit-tap-highlight-color: transparent;
 }
-
-.title {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center; 
-}
-
-.title h2 {
-  font-family: Montserrat, sans-serif;
-  color: #AE9983;
-  font-size: 25px;
-  text-transform: ;
-}
-
-.title p {
-  margin-bottom: 3px;
-  font-size: 14px;
-  font-weight: 600;
-  margin-top: -15px;
-  color: #AE9983;
-  opacity: 0.7;
-}
-
 
 #greeting-card {
     width: auto;
     margin: 30px auto;
-    background-color: #ffffff;
-    border-radius: 10px;
+    background-color: transparent;
     padding: 5px 20px 20px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     text-align: left;
 }
 
 #good-greeting {
-    font-family: Sansita, sans-serif;
+    font-family: 'Sansita', sans-serif;
     font-weight: 800;
     font-size: 28px;
     margin-bottom: -32px;
 }
 
 #greeting {
-  font-family: Sansita, sans-serif;
+  font-family: 'Sansita', sans-serif;
   font-weight: 800;
   font-size: 28px;
   margin-bottom: 10px;
 }
 
 #date {
-  font-family: Montserrat, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 10px;
   font-weight: 700;
   opacity: 0.8;
@@ -72,35 +47,30 @@ body {
   background: transparent;
 }
 
-
-
 #user-name {
-    font-family: Inter, sans-serif;
+    width: 150px;
     font-weight: 600;
     padding: 4px 7px;
     font-size: 16px;
     margin-right: 10px;
     color: #AE9983;
     border: none;
-    border-bottom: 2px solid #CDB8A2;
+    border-bottom: 1px solid rgba(150,131,110,0.5);
     background-color: transparent;
     outline: none;
-}
-
-#user-name:hover {
+  &:hover {
     color: #96836E;
-    border-bottom: 2px solid #AE9983;
-}
-
-#user-name:focus {
-    
+    border-bottom: 1.8px solid #AE9983;
+  }
+  &:focus {
     color: #96836E;
-    border-bottom: 2px solid #AE9983;
-}
-
-#user-name::placeholder {
+    border-bottom: 1.8px solid #AE9983;
+  }
+  &::placeholder {
     color: #AE9983;
     font-weight: 500;
+    opacity: 0.5;
+  }
 }
 
 .color-dropdown {
@@ -111,13 +81,15 @@ body {
     border-radius: 10px;
     border: 1px solid #AE9983;
     display: inline-block;
-    background: #F4EBE6;
+    background: #fff;
     padding: 10px 20px;
     width: 120px;
+  &:hover {
+    background: #F4EBE6;
+  }
 }
 
 .color-option span {
-    
     position: absolute;
     margin-top: 7px;
     margin-left: 2.6em;
@@ -159,13 +131,16 @@ body {
 }
 
 .message {
-  font-family: Montserrat, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 10.5px;
-  font-weight: 600;
+  font-weight: 700;
+  opacity: 0.7;
+  text-align: center;
+  border-radius: 4px;
   padding: 4px 8px;
   color: #AE9983;
-  background: #E8D9D2;
-  margin-top: 5em;
+  background: #FBF3EE;
+  margin-top: 4em;
 }
 
 .link-container {
@@ -174,41 +149,34 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 320px;
+  min-width: 321px;
   height: 45px;
   margin-top: 0.3em;
-  
   background: transparent;
   border: 1px solid #AE9983;
   border-radius: 10px;
 }
 
 #copy-link-btn {
-  min-width: 110px;
-  padding: 10px 0px;
+  padding: 10px 10px;
   font-size: 12px;
   font-weight: 600;
   color: white;
   border: none;
   border-radius: 5px;
   background: #AE9983;
+ &:hover {
+  background: #BDA892;
+  }
+ &:active {
+  transform: translateY(1px);
+  }
 }
 
 #copy-link-btn i {
-  margin-right: 3px;
-  margin-left: -1px;
+  margin-right: 2px;
+  margin-left: -0.1px;
 }
-
-#copy-link-btn:hover{
-  background: #BDA892;
-}
-
-#copy-link-btn:active{
-  transform: translateY(1px);
-}
-
-
-
 
 #generated-link {
   background: transparent;
@@ -218,20 +186,16 @@ body {
   font-size: 15px;
   border: none;
   border-radius: 10px;
-}
-
-#generated-link:focus {
+ &:focus {
   outline: none;
+  }
 }
-
 
 button {
     cursor: pointer;
 }
 
 ::selection {
-    background-color: #AE9983; /* Orange background */
-    color: #fff; /* White text color */
+    background-color: #E8D9D2;
+    color: #AE9983;
 }
-
-
