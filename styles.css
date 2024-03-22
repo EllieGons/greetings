@@ -81,7 +81,6 @@ body {
     border-radius: 10px;
     border: 1px solid #AE9983;
     display: inline-block;
-    background: #fff;
     padding: 10px 20px;
     width: 120px;
   &:hover {
