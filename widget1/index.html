@@ -6,7 +6,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <title>Greetings Widget</title>
     <style>
-        
         #greeting-card {
             position: absolute;
             top: -1em;
@@ -49,30 +48,30 @@
             var userName = urlParams.get('user') || 'Muffin'; 
             var color = urlParams.get('color') || '#B89F89'; 
 
-            
-            document.getElementById('greeting').textContent = getGreeting(new Date().getHours()) + ', ' + userName + '!';
+            // Initial greeting with user name
+            updateGreeting(userName);
+
+            // Update date
             document.getElementById('date').textContent = getDateInfo(new Date());
 
-            
+            // Set color for greeting card
             var greetingCard = document.getElementById('greeting-card');
             greetingCard.style.color = color; 
             greetingCard.style.borderColor = color; 
         });
 
-        
-            // Function to update greeting based on current time
-        function updateGreeting() {
+        // Function to update greeting based on current time and user name
+        function updateGreeting(userName) {
             var hour = new Date().getHours();
             var greetingText = document.getElementById('greeting');
             var greeting = getGreeting(hour);
-            greetingText.textContent = greeting;
+            greetingText.textContent = 'Good ' + greeting + ', ' + userName + '!';
         }
 
-        // Update greeting initially
-        updateGreeting();
-
         // Update greeting every minute (adjust interval as needed)
-        setInterval(updateGreeting, 60000); // Update every minute
+        setInterval(function() {
+            updateGreeting(document.getElementById('greeting').textContent.split(',')[1].trim());
+        }, 60000); // Update every minute
 
         // Function to get the current greeting
         function getGreeting(hour) {
@@ -87,7 +86,7 @@
             }
         }
 
-        
+        // Function to get the current date information
         function getDateInfo(date) {
             var dayOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
             var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
