@@ -62,11 +62,16 @@
 
         // Function to update greeting based on current time and user name
         function updateGreeting(userName) {
-            var hour = new Date().getHours();
-            var greetingText = document.getElementById('greeting');
-            var greeting = getGreeting(hour);
-            greetingText.textContent = greeting + ', ' + userName;
-        }
+        var hour = new Date().getHours();
+        var greetingText = document.getElementById('greeting');
+        var greeting = getGreeting(hour);
+    
+            if (!greetingText.textContent.includes(userName)) {
+        greetingText.textContent = greeting + ', ' + userName + '!';
+            } else {
+        greetingText.textContent = greeting + ', ' + userName;
+    }
+}
 
         // Update greeting every minute (adjust interval as needed)
         setInterval(function() {
