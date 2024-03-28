@@ -6,7 +6,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <title>Greetings Widget</title>
     <style>
-        
         #greeting-card {
             position: absolute;
             top: -1em;
@@ -50,7 +49,9 @@
             var color = urlParams.get('color') || '#B89F89'; 
 
             
-            document.getElementById('greeting').textContent = getGreeting(new Date().getHours()) + ', ' + userName + '!';
+            updateGreeting(userName);
+
+            
             document.getElementById('date').textContent = getDateInfo(new Date());
 
             
@@ -60,17 +61,35 @@
         });
 
         
-            function getGreeting(hour) {
-                if (hour >= 5 && hour < 12) {
-            return 'morning';
-                } else if (hour >= 12 && hour < 18) {
-            return 'afternoon';
-                } else if (hour >= 18 && hour < 22) {
-            return 'evening';
-                } else {
-            return 'night';
-        }
+        function updateGreeting(userName) {
+        var hour = new Date().getHours();
+        var greetingText = document.getElementById('greeting');
+        var greeting = getGreeting(hour);
+    
+            if (!greetingText.textContent.includes(userName)) {
+        greetingText.textContent = greeting + ', ' + userName + '!';
+            } else {
+        greetingText.textContent = greeting + ', ' + userName;
     }
+}
+
+        
+        setInterval(function() {
+            updateGreeting(document.getElementById('greeting').textContent.split(',')[1].trim());
+        }, 30000); 
+
+        
+        function getGreeting(hour) {
+            if (hour >= 5 && hour < 12) {
+                return 'morning';
+            } else if (hour >= 12 && hour < 18) {
+                return 'afternoon';
+            } else if (hour >= 18 && hour < 22) {
+                return 'evening';
+            } else {
+                return 'night';
+            }
+        }
 
         
         function getDateInfo(date) {
